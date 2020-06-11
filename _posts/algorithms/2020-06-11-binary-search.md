@@ -2,7 +2,6 @@
 layout: post
 author: daniel
 ---
-# Binary Search
 
 Computational complexity O(log n)
 ## Recursive version
