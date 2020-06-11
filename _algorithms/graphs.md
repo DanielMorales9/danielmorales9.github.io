@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: page
 author: daniel
+name: Graphs
+lesson: 7
 ---
 
 ## Course Schedule

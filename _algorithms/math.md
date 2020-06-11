@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: page
 author: daniel
+name: Math
+lesson: 3
 ---
 ## Count Primes
 Count the number of prime numbers less than a non-negative number, n.

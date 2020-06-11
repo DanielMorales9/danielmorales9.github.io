@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: page
 author: daniel
+name: Binary Search
+lesson: 2
 ---
 
 Computational complexity O(log n)

@@ -10,3 +10,10 @@ github_username:  DanielMorales9
 # Build settings
 markdown: kramdown
 permalink: /:year/:title:output_ext
+
+collections_dir: .
+collections:
+  algorithms:
+    output: true
+    sort_by: lesson
+

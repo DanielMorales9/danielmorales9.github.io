@@ -1,6 +1,7 @@
 ---
-layout: post
+layout: page
 author: daniel
+name: Dynamic Programming
 ---
 Is about finding some work that the naive usually recursive solution would repeat multiple times unnecessarily. Instead, it’s better to save the result of that subproblem and reuse it multiple times to avoid extra computation. 
  

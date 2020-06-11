@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: page
 author: daniel
+name: Bit Manipulation
+lesson: 10
 ---
 ## Integer Replacement
 Given a positive integer n and you can do operations as follow:
