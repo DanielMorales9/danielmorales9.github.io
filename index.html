@@ -17,11 +17,11 @@ layout: default
 
   <h1 class="page-heading">Kata Algorithms</h1>
   {% for algo in site.algorithms %}
-  <h2>
+  <h4>
     <a href="{{ algo.url }}">
       {{ algo.name }}
     </a>
-  </h2>
+  </h4>
   {% endfor %}
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
