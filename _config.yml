@@ -2,10 +2,12 @@
 title: Daniel Morales
 email: dnlmrls9@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Daniel Morales a passionate Software Engineer with manifold interests in the field of Data and Software Engineer.
+  Daniel Morales a passionate Software Engineer with manifold interests in the field of Data and Software Engineering.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://danielmorales9.github.io" # the base hostname & protocol for your site
 github_username:  DanielMorales9
+linkedin_username:  daniel-morales9
+leetcode_username:  danielmorales9
 
 # Build settings
 markdown: kramdown
