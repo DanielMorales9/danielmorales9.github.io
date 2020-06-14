@@ -461,3 +461,88 @@ def minDistance(word1, word2):
                 dp[i][j] = min([dp[i-1][j], dp[i][j-1], dp[i-1][j-1]]) + 1
     return dp[-1][-1]
 ````
+
+## Cheapest Flights within K Stops
+ 
+There are n cities connected by m flights. Each flight starts from city u and arrives at v with a price w.
+ 
+Now given all the cities and flights, together with starting city src and the destination dst, your task is to find the cheapest price from src to dst with up to k stops. If there is no such route, output -1.
+### Dijkstra Algorithm
+ 
+Although a simple DFS or BFS would have been correct, we would have still got a TLE. An alternative solution is to use Dijkstra algorithm which is a BFS with a priority queue. Using this data structure allows us to pop from the queue the node with the lowest cost so far, essentially the local optimal path. Thus, reducing the initial complexity of O(V+E) to O((V + E) log(V)). 
+ 
+We also made sure we do not visit a node again unless it has a lower number of steps, as it will certainly lead to higher overall cost.
+ 
+````python
+from collections import defaultdict
+import heapq
+import math
+
+def makeGraph(flights):
+    g = defaultdict(list)
+    
+    for (src, dst, price) in flights:
+        g[src].append((dst, price))
+    
+    return g
+
+def findCheapestPrice(n, flights, src, dst, K):
+    g = makeGraph(flights)
+
+    visited = defaultdict(lambda: math.inf)
+    prio = [(0, -1, src)]
+
+
+    while prio:
+        cost, steps, node = heapq.heappop(prio)
+
+        if visited[node] <= steps:
+            continue
+
+        visited[node] = steps
+
+        if steps > K:
+            continue
+
+        if node == dst:
+            return cost
+
+        for (node, weight) in g[node]:
+            heapq.heappush(prio, (cost + weight, steps + 1, node))
+
+    return -1
+````
+
+### Bellman-Ford Algorithm
+An alternative solution, is to use the Bellman-Ford Algorithm, which is probably the fastest solution and it follows a similar pattern to other DP problems we already encountered. 
+Similar to the Climbing starts we keep a DP array to store the minimum cost so far. 
+For each step up to K, we compute the minimum price or cost from going to any node to any other node. By doing this we are incrementally updating the lowest price to go to any node, making this solution effective also for single node source to many destination nodes. 
+The important part is the initialization step of the DP array whose destinations are initialized with the price of the direct link from the source.
+ 
+The final time complexity is equal to O(K * m) where K is the number of allowed steps and m is the number of flights or edges.
+
+````python 
+import math
+
+def findCheapestPrice(n, flights, src, dst, K):
+    prices = [math.inf for _ in range(n)]
+
+    prices[src] = 0
+
+    for (a, b, p) in flights:
+        if a == src:
+            prices[b] = p
+
+    for i in range(0, K):
+
+        current = [*prices]
+        for (a, b, p) in flights:
+            current[b] = min(current[b], prices[a] + p)
+
+        prices = current
+
+    if prices[dst] == math.inf:
+        return -1
+    else:
+        return prices[dst]
+````
